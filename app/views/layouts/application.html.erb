@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers2</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  </head>
+
+  <% if flash[:notice] %>
+  <p class="alert alert-success"><%= notice %></p>
+  <% elsif flash[:alert] %>
+  <p class="alert alert-danger"><%= alert %></p>
+  <% end %>
+
+  <header class="shadow-sm">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+    <h2 class="title"> <%= link_to "Bookers", root_path %></h2>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+        <% if user_signed_in? %>
+
+            <%= link_to user_path(current_user), class: 'btn btn-default' do%>
+              <i class="fas fa-home">Home</i>
+            <% end %>
+
+          <li>
+          <%= link_to users_path, class: 'btn btn-default' do %>
+            <i class="fas fa-users">Users</i>
+          <% end %>
+          </li>
+          <li>
+          <%= link_to books_path, class: 'btn btn-default' do %>
+            <i class="fas fa-book-open">Books</i>
+          <% end %>
+          </li>
+          <li>
+          <%= link_to destroy_user_session_path, class: 'btn btn-default', method: :delete do %>
+            <i class="fas fa-sign-out-alt">Log out</i>
+          <% end %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to root_path, class: 'btn btn-default' do %>
+              <i class="fas fa-home">Home</i>
+            <% end %>
+          </li>
+          <li>
+            <!--about_pathはHome/showにアクセス-->
+            <%= link_to home_about_path, class: 'btn btn-default' do %>
+              <i class="fas fa-link">About</i>
+            <% end %>
+          </li>
+          <li>
+          <%= link_to new_user_registration_path, class: 'btn btn-default' do %>
+            <i class="fas fa-user-plus">Sign up</i>
+          <% end %>
+          </li>
+          <li>
+          <%= link_to new_user_session_path, class: 'btn btn-default' do %>
+            <i class="fas fa-sign-in-alt">Log in</i>
+          <% end %>
+          </li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+    <%= yield %>
+    <footer>
+    <p class="text-center">CopyRight Infratop.inc</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+
+
+  </body>
+</html>
