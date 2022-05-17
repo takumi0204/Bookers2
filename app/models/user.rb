@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  attachment :image
+  attachment :profile_image
 
   # booksを複数形に設定
   has_many :books, dependent: :destroy

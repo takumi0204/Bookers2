@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-3">
+    <div class="col-md-3">
       <%= render 'users/user', user: @user %>
-      <%= render 'books/book', books: @book %>
+      <%= render 'books/book', book: @book %>
     </div>
 
-    <div class="col-lg-9">
+    <div class="col-md-8 offset-md-1">
       <h2>Users</h2>
       <table class="table user-index">
         <thead>
@@ -17,7 +17,7 @@
         <tbody>
           <% @users.each do |user| %>
             <tr>
-              <td><%= attachment_image_tag user, :image, size:"80x80",fallback: "noimage.jpg"%></td>
+              <td><%= attachment_image_tag user, :profile_image, size:"80x80",fallback: "noimage.jpg"%></td>
               <td><%= user.name %></td>
               <td><%= link_to "Show", "/users/#{user.id}" %></td>
             </tr>

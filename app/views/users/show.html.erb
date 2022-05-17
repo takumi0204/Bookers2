@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-3">
+    <div class="col-md-3">
         <%= render 'users/user', user: @user %>
-        <%= render 'books/book', books: @book %>
+        <%= render 'books/book', book: @book %>
     </div>
 
-    <div class="col-lg-9">
+    <div class="col-md-8 offset-md-1">
         <h2>Books</h2>
             <table class="table table-user-show">
                 <thead>
@@ -19,7 +19,7 @@
                         <tr>
                             <td>
                                 <%= link_to user_path(@user) do %>
-                                <%= attachment_image_tag @user, :image, size:"80x80", fallback: 'noimage.jpg' %>
+                                <%= attachment_image_tag @user, :profile_image, size:"80x80", fallback: 'noimage.jpg' %>
                                 <% end %>
                             </td>
                             <td><%= link_to book.title, book_path(book.id) %></td>
